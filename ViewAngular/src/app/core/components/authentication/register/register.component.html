@@ -1,0 +1,90 @@
+<div class="col-12 d-flex justify-content-center " [formGroup]="formMain">
+
+    <div class="col-12 d-flex justify-content-center p-5">
+        <div class="card w-50" style="padding-top: 50px;">
+            <div class="card-body">
+
+                <h5 class="card-title">Card title</h5>
+                <div class="container col-12">
+                    <div class="p-5">
+                        <div class="container">
+                            <div class="d-flex justify-content-center">
+                                <h1>Cadastrar Usuário</h1>
+                            </div>
+                        </div>
+                        <div class="pt-2"></div>
+                        <div class="container col-8">
+                            <div class=" d-flex justify-content-start">
+                                <div class=" d-flex justify-content-start">
+                                    <h5> <label for="">USUÁRIO:</label></h5>
+                                </div>
+                            </div>
+                            <input class="form-control align-self-center" type="text" formControlName="userName" [ngClass]="{'is-invalid': validatorMessages.touchedErrors(formMain, 'userName')}">
+
+                            <div class="invalid-feedback">
+                                <span>{{validatorMessages.required(formMain,'userName', '')}}</span>
+                            </div>
+                        </div>
+                        <div class="container col-8">
+                            <div class=" d-flex justify-content-start">
+                                <div class=" d-flex justify-content-start">
+                                    <h5> <label for="">EMAIL:</label></h5>
+                                </div>
+                            </div>
+                            <input class="form-control align-self-center" type="text" formControlName="email" [ngClass]="{'is-invalid': validatorMessages.touchedErrors(formMain, 'email')}">
+
+                            <div class="invalid-feedback">
+                                <span>{{validatorMessages.required(formMain,'email', '')}}</span>
+                            </div>
+                        </div>
+                        <div class="pt-2"></div>
+                        <div class="container col-8">
+                            <div class=" d-flex justify-content-start">
+                                <div class=" d-flex justify-content-start">
+                                    <h5> <label for="">SENHA:</label></h5>
+                                </div>
+                            </div>
+                            <input (input)="validatorCustom.fieldCompare(formMain, 'password', 'confirmPassword')" class=" form-control align-self-center" type="password" formControlName="password" [ngClass]="{'is-invalid': validatorMessages.touchedErrors(formMain, 'password')}">
+                        </div>
+                        <div class="pt-2"></div>
+                        <div class="container col-8">
+                            <div class=" d-flex justify-content-start">
+                                <div class=" d-flex justify-content-start">
+                                    <h5> <label for="">CONFIRMAR SENHA:</label></h5>
+                                </div>
+                            </div>
+                            <input (input)="validatorCustom.fieldCompare(formMain, 'confirmPassword', 'password')" class=" form-control align-self-center" type="password" formControlName="confirmPassword" [ngClass]="{'is-invalid': validatorMessages.touchedErrors(formMain, 'confirmPassword')}">
+                            <!-- <div class="invalid-feedback">
+                                <span>{{validatorMessages.required(formMain,'confirmPassword', '')}}</span>
+                                <span>{{validatorMessages.compareFields(formMain, 'confirmPassword')}}</span>
+                            </div> -->
+                        </div>
+                        <div class="pt-2"></div>
+                        <div class="container col-4">
+                            <div class=" d-flex justify-content-start">
+                                <div class="d-flex justify-content-start">
+                                    <button class="btn btn-success" (click)="register()">CADASTRAR</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="invalid-feedback">
+                    <span>{{validatorMessages.required(formMain,'password', '')}}</span>
+                    <span>{{validatorMessages.compareFields(formMain,'password')}}</span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="card-text"> Caso já seja cadastrador. </p>
+                    </div>
+                    <div class="col d-flex justify-content-end">
+                        <p class="card-text " [routerLink]="['/login']">ENTRAR.</p>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center"> {{formMain.value | json}}</div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
